@@ -45,37 +45,40 @@ export default function EnterLocationScreen() {
 
       <View style={styles.mainContent}>
         {/* Location Inputs */}
-        <View style={styles.locationContainer}>
+        <View style={styles.locationInputsContainer}>
           {/* Pickup Location */}
-          <View style={styles.locationRow}>
-            <View style={styles.locationDot}>
-              <View style={styles.pickupDot} />
+          <View style={styles.inputField}>
+            <Text style={styles.inputLabel}>Starting from?</Text>
+            <View style={styles.inputRow}>
+              <View style={styles.locationDot}>
+                <View style={styles.pickupDot} />
+              </View>
+              <TextInput
+                style={styles.locationInput}
+                value={pickupLocation}
+                onChangeText={setPickupLocation}
+                placeholder="Starting from?"
+                placeholderTextColor="#999"
+              />
             </View>
-            <TextInput
-              style={styles.locationInput}
-              value={pickupLocation}
-              onChangeText={setPickupLocation}
-              placeholder="Pickup location"
-              placeholderTextColor="#999"
-            />
           </View>
 
-          {/* Connecting Line */}
-          <View style={styles.connectingLine} />
-
           {/* Drop Location */}
-          <View style={styles.locationRow}>
-            <View style={styles.locationDot}>
-              <View style={styles.dropDot} />
+          <View style={styles.inputField}>
+            <Text style={styles.inputLabel}>Where are you going?</Text>
+            <View style={styles.inputRow}>
+              <View style={styles.locationDot}>
+                <View style={styles.dropDot} />
+              </View>
+              <TextInput
+                style={styles.locationInput}
+                value={dropLocation}
+                onChangeText={setDropLocation}
+                placeholder="Where are you going?"
+                placeholderTextColor="#999"
+                autoFocus={true}
+              />
             </View>
-            <TextInput
-              style={[styles.locationInput, styles.dropInput]}
-              value={dropLocation}
-              onChangeText={setDropLocation}
-              placeholder="Where are you going?"
-              placeholderTextColor="#999"
-              autoFocus={true}
-            />
           </View>
         </View>
 
@@ -145,20 +148,31 @@ const styles = StyleSheet.create({
     flex: 1,
     paddingHorizontal: 20,
   },
-  locationContainer: {
-    backgroundColor: '#fff',
-    borderRadius: 12,
-    padding: 20,
+  locationInputsContainer: {
     marginTop: 20,
-    shadowColor: '#000',
-    shadowOffset: { width: 0, height: 2 },
-    shadowOpacity: 0.1,
-    shadowRadius: 8,
-    elevation: 3,
   },
-  locationRow: {
+  inputField: {
+    marginBottom: 20,
+  },
+  inputLabel: {
+    fontSize: 16,
+    fontFamily: 'Poppins-SemiBold',
+    color: '#666',
+    marginBottom: 8,
+    marginLeft: 4,
+  },
+  inputRow: {
     flexDirection: 'row',
     alignItems: 'center',
+    backgroundColor: '#fff',
+    borderRadius: 8,
+    paddingHorizontal: 16,
+    paddingVertical: 16,
+    shadowColor: '#000',
+    shadowOffset: { width: 0, height: 1 },
+    shadowOpacity: 0.1,
+    shadowRadius: 3,
+    elevation: 2,
   },
   locationDot: {
     width: 20,
@@ -171,31 +185,19 @@ const styles = StyleSheet.create({
     width: 12,
     height: 12,
     borderRadius: 6,
-    backgroundColor: '#000',
+    backgroundColor: '#333',
   },
   dropDot: {
     width: 12,
     height: 12,
-    borderRadius: 2,
+    borderRadius: 1,
     backgroundColor: '#f5cb5c',
-  },
-  connectingLine: {
-    width: 2,
-    height: 20,
-    backgroundColor: '#ddd',
-    marginLeft: 9,
-    marginVertical: 8,
   },
   locationInput: {
     flex: 1,
     fontSize: 16,
     fontFamily: 'Poppins-Regular',
     color: '#000',
-    paddingVertical: 12,
-  },
-  dropInput: {
-    borderBottomWidth: 1,
-    borderBottomColor: '#f0f0f0',
   },
   centeredContent: {
     flex: 1,

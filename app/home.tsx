@@ -34,11 +34,14 @@ export default function HomeScreen() {
       {/* Bottom Section */}
       <View style={styles.bottomSection}>
         {/* Where to go button */}
-        <TouchableOpacity style={styles.whereToGoButton} onPress={handleWhereToGo}>
-          <View style={styles.whereToGoContent}>
-            <Text style={styles.whereToGoText}>Where would you like to go?</Text>
-            <View style={styles.arrowIcon}>
-              <Text style={styles.arrowText}>→</Text>
+        <TouchableOpacity style={styles.searchContainer} onPress={handleWhereToGo}>
+          <View style={styles.searchBox}>
+            <View style={styles.searchIcon}>
+              <MapPin size={20} color="#666" />
+            </View>
+            <Text style={styles.searchText}>Where to?</Text>
+            <View style={styles.laterButton}>
+              <Text style={styles.laterText}>Later</Text>
             </View>
           </View>
         </TouchableOpacity>
@@ -112,33 +115,48 @@ const styles = StyleSheet.create({
     paddingTop: 20,
     paddingBottom: 30,
   },
-  whereToGoButton: {
-    backgroundColor: '#000',
-    borderRadius: 12,
-    paddingVertical: 18,
-    paddingHorizontal: 20,
+  searchContainer: {
     marginBottom: 20,
   },
-  whereToGoContent: {
+  searchBox: {
+    backgroundColor: '#f0f0f0',
+    borderRadius: 12,
+    paddingVertical: 16,
+    paddingHorizontal: 20,
     flexDirection: 'row',
-    justifyContent: 'space-between',
     alignItems: 'center',
+    shadowColor: '#000',
+    shadowOffset: { width: 0, height: 2 },
+    shadowOpacity: 0.1,
+    shadowRadius: 4,
+    elevation: 3,
   },
-  whereToGoText: {
+  searchIcon: {
+    marginRight: 12,
+  },
+  searchText: {
+    flex: 1,
     fontSize: 18,
     fontFamily: 'Poppins-Regular',
-    color: '#f5cb5c',
+    color: '#333',
   },
-  arrowIcon: {
-    width: 24,
-    height: 24,
-    justifyContent: 'center',
+  laterButton: {
+    backgroundColor: '#fff',
+    paddingHorizontal: 16,
+    paddingVertical: 8,
+    borderRadius: 20,
+    shadowColor: '#000',
+    shadowOffset: { width: 0, height: 1 },
+    shadowOpacity: 0.1,
+    shadowRadius: 2,
+    elevation: 2,
+  },
+  laterText: {
+    fontSize: 14,
+    fontFamily: 'Poppins-SemiBold',
+    color: '#333',
+    flexDirection: 'row',
     alignItems: 'center',
-  },
-  arrowText: {
-    fontSize: 18,
-    color: '#f5cb5c',
-    fontWeight: 'bold',
   },
   quickActions: {
     flexDirection: 'row',
